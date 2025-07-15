@@ -41,8 +41,10 @@ ZipGrocer/
 ```bash
 git clone https://github.com/Uday-Shah-009/ZipGrocer.git
 cd ZipGrocer
+```
 
 ### 2. Setup Backend
+``` bash
 cd backend
 npm install
 cp .env.example .env  # Set MONGODB_URI, JWT_SECRET, etc.
@@ -50,8 +52,9 @@ cp .env.example .env  # Set MONGODB_URI, JWT_SECRET, etc.
 # Start Server
 npm run dev   # or npm start
 Backend will run on: http://localhost:5000
-
+```
 ### 3.setup admin panel
+``` bash
 cd ../admin-panel
 npm install
 
