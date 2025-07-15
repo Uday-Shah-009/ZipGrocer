@@ -190,12 +190,18 @@ Planned mobile apps using same backend API:
 
 ---
 
-### Env sample for backend
--PORT=5000
--MONGODB_URI=your_mongo_uri
--JWT_SECRET=your_jwt_secret
--EMAIL_USER=you@gmail.com
--EMAIL_PASS=your_password
+
+## 🔐 Environment Variables
+
+Create a `.env` file in the `backend/` directory and add the following:
+
+```env
+PORT=5000
+MONGODB_URI=your_mongo_uri
+JWT_SECRET=your_jwt_secret
+EMAIL_USER=you@gmail.com
+EMAIL_PASS=your_password
+```
 
 ### still in making 🔼
 
