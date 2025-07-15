@@ -187,3 +187,15 @@ Planned mobile apps using same backend API:
 
 - Use **Postman** to test APIs (auth, products, orders)
 - MongoDB Atlas for cloud DB (recommended)
+
+---
+
+### Env sample for backend
+PORT=5000
+MONGODB_URI=your_mongo_uri
+JWT_SECRET=your_jwt_secret
+EMAIL_USER=you@gmail.com
+EMAIL_PASS=your_password
+
+### still in making 🔼
+
