@@ -26,3 +26,40 @@ Full-stack grocery delivery system with:
 
 ## 📁 Project Structure
 
+ZipGrocer/
+├── backend/ # Express API
+├── admin-panel/ # React Admin Dashboard
+├── README.md # You are here
+
+
+---
+
+## 🚀 How to Run
+
+### 1. Clone Repo
+
+```bash
+git clone https://github.com/Uday-Shah-009/ZipGrocer.git
+cd ZipGrocer
+
+### 2. Setup Backend
+cd backend
+npm install
+cp .env.example .env  # Set MONGODB_URI, JWT_SECRET, etc.
+
+# Start Server
+npm run dev   # or npm start
+Backend will run on: http://localhost:5000
+
+### 3.setup admin panel
+cd ../admin-panel
+npm install
+
+# Create .env file
+echo "VITE_API_BASE_URL=http://localhost:5000/api" > .env
+
+# Start Admin Panel
+npm run dev
+Admin will run on: http://localhost:5173
+```
+
