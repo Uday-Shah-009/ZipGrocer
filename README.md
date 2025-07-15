@@ -123,3 +123,9 @@ Navigate to the `backend/` folder and run:
 npm install express mongoose jsonwebtoken bcryptjs dotenv cors morgan nodemailer cloudinary multer express-async-handler
 ```
 
+###🖥️ Admin Panel (React + Vite)
+Navigate to the admin-panel/ folder and run:
+``` bash
+npm install react react-dom axios @tanstack/react-query @tanstack/react-router zustand react-hook-form react-toastify tailwindcss cloudinary
+```
+
