@@ -129,3 +129,61 @@ Navigate to the admin-panel/ folder and run:
 npm install react react-dom axios @tanstack/react-query @tanstack/react-router zustand react-hook-form react-toastify tailwindcss cloudinary
 ```
 
+# 🧑‍💻 Roles
+
+- **Admin**: Product/category CRUD, manage orders & delivery partners  
+- **User**: (To be used in upcoming mobile app)  
+- **Delivery Partner**: (Upcoming app for accepting & updating orders)
+
+---
+
+# 🔑 Auth & Security
+
+- JWT for auth (`Authorization: Bearer <token>`)
+- Role-based protected routes in backend & frontend
+- Zustand store to persist auth state in admin panel
+
+---
+
+# 🛠 Features
+
+## ✅ Backend
+
+- Auth (Register/Login for all roles)
+- Category/Product CRUD (Admin)
+- Cart, Orders, Delivery tracking
+- Nodemailer (emails on events)
+- Socket.IO ready for real-time updates
+
+## ✅ Admin Panel
+
+- Protected routes via TanStack Router
+- Zustand auth & global state
+- React Hook Form + Toastify
+- API hooks via TanStack Query
+- Cloudinary for image uploads
+- Modular folder structure:  
+  `/shared`, `/features`, `/pages`, `/router`, `/store`
+
+---
+
+# 📱 Upcoming Phase (React Native)
+
+Planned mobile apps using same backend API:
+
+## 📲 User App:
+
+- Browse products, cart, checkout  
+- Track order status  
+
+## 🚚 Delivery Partner App:
+
+- Accept & deliver orders  
+- Live location + status update  
+
+---
+
+# 🧪 Testing
+
+- Use **Postman** to test APIs (auth, products, orders)
+- MongoDB Atlas for cloud DB (recommended)
