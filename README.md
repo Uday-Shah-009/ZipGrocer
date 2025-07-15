@@ -109,3 +109,17 @@ Admin will run on: http://localhost:5173
 
 This package setup keeps the project modular, scalable, and dev-friendly.
 
+## 📦 Installing Dependencies
+
+Follow these commands to install all required packages for both the **Backend** and **Admin Panel**.
+
+---
+
+### 🔙 Backend (Node.js + Express)
+
+Navigate to the `backend/` folder and run:
+
+```bash
+npm install express mongoose jsonwebtoken bcryptjs dotenv cors morgan nodemailer cloudinary multer express-async-handler
+```
+
