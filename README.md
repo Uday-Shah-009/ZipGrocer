@@ -65,4 +65,47 @@ echo "VITE_API_BASE_URL=http://localhost:5000/api" > .env
 npm run dev
 Admin will run on: http://localhost:5173
 ```
+## 📦 Packages & Why They’re Used
+
+### 🔙 Backend (Node.js + Express)
+
+| Package              | Purpose                                                                 |
+|----------------------|-------------------------------------------------------------------------|
+| `express`            | Web server to handle API routes                                         |
+| `mongoose`           | MongoDB ORM for defining models and querying the DB                    |
+| `jsonwebtoken`       | For generating and verifying JWT tokens (auth)                          |
+| `bcryptjs`           | Hashing passwords securely before storing                              |
+| `dotenv`             | Load secrets like DB URI, JWT key from `.env` file                      |
+| `cors`               | Allow cross-origin requests from frontend (e.g., React admin panel)     |
+| `morgan`             | Log API requests in the console                                         |
+| `nodemailer`         | Send emails for events (register, order placed, delivered, etc.)        |
+| `cloudinary`         | Upload and store product images                                         |
+| `multer`             | Handle file uploads before sending to Cloudinary                       |
+| `express-async-handler` | Catch errors in async routes without `try/catch` everywhere        |
+| `socket.io` *(planned)* | Real-time notifications like delivery updates                        |
+
+> Dev-only: `nodemon` (auto-restart server on file change)
+
+---
+
+### 🖥️ Admin Panel (React + Vite)
+
+| Package                     | Purpose                                                               |
+|-----------------------------|-----------------------------------------------------------------------|
+| `react`, `react-dom`        | Core libraries to build the UI                                       |
+| `vite`                      | Fast dev server and production bundler                               |
+| `@tanstack/react-router`    | Route handling, navigation, and route protection                     |
+| `@tanstack/react-query`     | Data fetching, caching, and sync with backend APIs                   |
+| `zustand`                   | Global state (auth, cart, etc.) across the app                       |
+| `axios`                     | Make HTTP requests to backend APIs                                   |
+| `react-hook-form`           | Handle form state, validation, and submission                        |
+| `react-toastify`            | Show toast notifications (like "Category added!" or errors)          |
+| `tailwindcss`               | Utility-first CSS for beautiful, responsive UI                       |
+| `cloudinary`                | Upload product images directly to cloud storage                      |
+
+> Dev-only: `eslint`, `prettier` for clean and consistent code
+
+---
+
+This package setup keeps the project modular, scalable, and dev-friendly.
 
