@@ -13,7 +13,7 @@ export const useAddCategory = () => {
      },
      onError: (err) => {
       toast.error("failed to add category");
-      console.error(err)
+      console.error(err.message || "something went worng");
      }
   })
 }

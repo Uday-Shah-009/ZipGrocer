@@ -24,6 +24,7 @@ const AddCategory = () => {
     formData.append("subcategory[]", data.sub2);
     formData.append("subcategory[]", data.sub3);
     formData.append("image", file);
+    console.log(data)
     try {
       addCategoryMutate(formData);
     } catch (error) {

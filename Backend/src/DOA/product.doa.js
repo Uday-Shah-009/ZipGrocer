@@ -4,7 +4,7 @@ export const createProduct = async (product) => {
   const newProduct = await Product.create({
     image: product.image,
     name: product.name,
-    description: product.desc,
+    description: product.description,
     brand: product.brand,
     quantity: product.quantity,
     price: product.price,
