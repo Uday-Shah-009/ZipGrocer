@@ -121,12 +121,12 @@ const AddProduct = () => {
             <div className="flex justify-center items-center flex-col mt-3 h-full">
               <label
                 htmlFor="image"
-                className="border-dashed border-2 flex justify-center items-center border-[#393D47FF] mt-3 rounded-lg w-full h-[100%] flex-col"
+                className="border-dashed border-2 flex justify-center items-center border-[#393D47FF] mt-3 rounded-lg w-full h-full flex-col"
               >
                 {image ? (
                   <img
                     src={URL.createObjectURL(image)}
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-[100%] h-[260px] object-cover rounded-lg"
                   />
                 ) : (
                   <>

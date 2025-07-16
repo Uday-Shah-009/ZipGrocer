@@ -20,7 +20,7 @@ export const findProductByName = async(name) => {
 }
 
 export const findProductById = async(id) => {
-  const product = await Product.find(id).select("name price category description image");
+  const product = await Product.find(id);
   return product;
 }
 
@@ -34,6 +34,6 @@ export const updateById = async(id,updateData) => {
 }
 
 export const allProducts = async() => {
-  const products = await Product.find().select("name price category description");
+  const products = await Product.find();
   return products
 }
