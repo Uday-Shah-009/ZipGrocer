@@ -4,6 +4,7 @@ const Available = () => {
   const handleDelete = (id) => {
     setProducts(products.filter((item) => item.id !== id));
   };
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -52,6 +53,15 @@ const Available = () => {
         price: 45999,
         quantity: 5,
         status: "Low Stock",
+      },
+      {
+        id: 6,
+        image: "https://m.media-amazon.com/images/I/71r69Y7BSeL._SX679_.jpg",
+        productName: "Apple iPhone 15",
+        category: "Mobiles",
+        price: 79999,
+        quantity: 25,
+        status: "In Stock",
       },
     ]);
   }, []);
