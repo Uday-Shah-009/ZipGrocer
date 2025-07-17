@@ -4,17 +4,12 @@ import { useAuthStore } from "../store/authState.js";
 
 export const useMeQuery = () => {
   const { login, logout } = useAuthStore();
+  const token = useAuthStore((state) => state.token);
 
   return useQuery({
     queryKey: ["me"],
     queryFn: getMe,
+    enabled: !!token, 
     retry: false,
-    onSuccess: (user) => {
-      console.log("fetched")
-      login(user);
-    },
-    onError: () => {
-      logout();
-    },
   });
 };
