@@ -8,8 +8,10 @@ export const createOrderDoa = async (orderData) => {
 export const GetAllOrdersDoa = async () => {
   const orders = await Order.find()
     .populate("userId", "name email")
+    .populate("deliveryPartnerId", "name email")
     .populate("products.productId", "name price")
-    .sort({ createdAt: -1 });
+    .sort({ createdAt: -1 })
+    .lean();
   return orders;
 };
 
