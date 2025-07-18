@@ -5,10 +5,12 @@ import { useAllOrders } from "../shared/Queries/orders.query";
 const Orders = () => {
   const { data, isLoading } = useAllOrders();
   const [orderDetails, setOrderDetails] = useState({});
-  const handleDetials = (order) => {
+  const handleDetails = (order) => {
     setOrderDetails(order);
-    console.log(orderDetails);
   };
+  useEffect(() => {
+    console.log("Order Details Updated:", orderDetails);
+  }, [orderDetails]);
 
   return (
     <div className="w-full h-full">
@@ -31,7 +33,7 @@ const Orders = () => {
             data.orders.map((item) => {
               const date = new Date(item.createdAt).toLocaleDateString("en-IN");
               return (
-                <>
+                <div key={item._id}>
                   <div className="py-2 grid grid-cols-7 place-items-center mt-3">
                     <p className="ml-5">{item._id}</p>
                     <p>{item.userId.name}</p>
@@ -61,25 +63,28 @@ const Orders = () => {
                         : item.deliveryPartnerId.name}
                     </p>
                     <img
-                      onClick={() => handleDetials({ item })}
+                      onClick={() => handleDetails(item)}
                       className="cursor-pointer"
                       src="productAction.svg"
                       alt=""
                     />
                   </div>
                   <hr className="w-full mt-4 border-[#393D47B3]" />
-                </>
+                </div>
               );
             })
           )}
         </div>
-        
       </div>
       <div className="w-[25%] mt-7 py-3 px-2 bg-[#19191FFF] rounded-[8px] border border-[#393D47FF] border-solid shadow-[0px_0px_1px_#171a1f12,0px_0px_2px_#171a1f1F] flex flex-col justify-center">
-          <h1 className="text-2xl font-semibold">Order Details</h1>
-          <hr className="w-full mt-4 border-[#393D47B3]" />
-          <div className="mt-3 flex flex-col items-center justify-center"></div>
+        <h1 className="text-2xl font-semibold">Order Details</h1>
+        <hr className="w-full mt-4 border-[#393D47B3]" />
+        <div className="mt-3 flex flex-col items-center justify-center">
+          {orderDetails && (
+           <div></div>
+          )}
         </div>
+      </div>
     </div>
   );
 };

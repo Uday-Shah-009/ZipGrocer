@@ -6,20 +6,20 @@ import {
   getAllOrders,
   updateOrderStatus,
   userOrders,
-  GetProductDetails
+  GetProductDetails,
 } from "../services/order.service.js";
 import { sendMail } from "../utils/nodeMailer.js";
 import { emitUpdate } from "../utils/socketEmits.js";
 import { tryCatchWrapper } from "../utils/tryCatchWrapper.js";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 
-dotenv.config({path: './.env'})
+dotenv.config({ path: "./.env" });
 
 export const createOrder = tryCatchWrapper(async (req, res) => {
   const { id } = req.user;
   const placeOrder = await createOrderService(id);
   const user = await findByID(id);
-  const product = await GetProductDetails(placeOrder._id)
+  const product = await GetProductDetails(placeOrder._id);
 
   if (!placeOrder) {
     return res
@@ -34,10 +34,9 @@ export const createOrder = tryCatchWrapper(async (req, res) => {
     data: {
       name: user.name,
       orderId: placeOrder._id.toString(),
-      items:product
+      items: product,
     },
   });
-
 
   await sendMail({
     to: process.env.ADMIN_MAIL,
@@ -47,7 +46,7 @@ export const createOrder = tryCatchWrapper(async (req, res) => {
       user: user.name,
       userEmail: user.email,
       orderId: placeOrder._id.toString(),
-      items:product
+      items: product,
     },
   });
 
