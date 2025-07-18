@@ -4,7 +4,7 @@ import { useAllOrders } from "../shared/Queries/orders.query";
 
 const Orders = () => {
   const { data, isLoading } = useAllOrders();
-  const [orderDetails, setOrderDetails] = useState({});
+  const [orderDetails, setOrderDetails] = useState(null);
   const handleDetails = (order) => {
     setOrderDetails(order);
   };
@@ -81,7 +81,33 @@ const Orders = () => {
         <hr className="w-full mt-4 border-[#393D47B3]" />
         <div className="mt-3 flex flex-col items-center justify-center">
           {orderDetails && (
-           <div></div>
+            <>
+              <div className="flex items-center gap-2">
+                <p className="text-[#8C8D8BFF]">OrderID: </p>
+                <p className="text-white font-semibold">{orderDetails._id}</p>
+              </div>
+              <hr className="w-full mt-4 border-[#393D47B3]" />
+              <div className="flex items-center gap-2">
+                <p className="text-[#8C8D8BFF]">Customer: </p>
+                <p className="text-white font-semibold">
+                  {orderDetails.userId.name}
+                </p>
+              </div>
+              <hr className="w-full mt-4 border-[#393D47B3]" />
+              <div className="flex items-center gap-2">
+                <p className="text-[#8C8D8BFF]">Status: </p>
+                <p className="text-white font-semibold">
+                  {orderDetails.status}
+                </p>
+              </div>
+              <hr className="w-full mt-4 border-[#393D47B3]" />
+              <div className="flex items-center gap-2">
+                <p className="text-[#8C8D8BFF]">Total: </p>
+                <p className="text-white font-semibold">
+                  {orderDetails.totalAmount}
+                </p>
+              </div>
+            </>
           )}
         </div>
       </div>
