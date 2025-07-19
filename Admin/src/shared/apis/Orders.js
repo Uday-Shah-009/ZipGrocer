@@ -5,7 +5,8 @@ export const getAllOrders = async() => {
    return res.data
 }
 
-export const updateStatus = async(id, status) => {
-   const res = await axiosInstance.patch(`/update/${id}/status`);
+export const updateStatus = async(payload) => {
+   const {id , status} = payload
+   const res = await axiosInstance.patch(`/order/update/${id}/status`, {status});
    return res.data
 }

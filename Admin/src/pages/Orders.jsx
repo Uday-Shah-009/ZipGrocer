@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useAllOrders } from "../shared/Queries/orders.query";
+import { useAllOrders, useUpdateStatus } from "../shared/Queries/orders.query";
 import { useForm } from "react-hook-form";
+
 
 const Orders = () => {
   const { data, isLoading } = useAllOrders();
+  const {mutate: useStatusMutate, isPending} = useUpdateStatus();
   const [orderDetails, setOrderDetails] = useState(null);
   const {
     register,
@@ -15,6 +17,10 @@ const Orders = () => {
   const handleDetails = (order) => {
     setOrderDetails(order);
   };
+  const handleUpdate = (id, status) => {
+    console.log(id)
+      useStatusMutate({id, status});
+  }
 
   useEffect(() => {
     if (orderDetails) {
@@ -93,7 +99,7 @@ const Orders = () => {
         <div className="mt-3 flex flex-col">
           {orderDetails && (
             <>
-              <div className="flex items-center gap-2 ">
+              <div key={orderDetails._id} className="flex items-center gap-2 ">
                 <p className="text-[#8C8D8BFF]">OrderID: </p>
                 <p className="text-white font-semibold">{orderDetails._id}</p>
               </div>
@@ -113,6 +119,10 @@ const Orders = () => {
                     name="status"
                     className="bg-[#000000] rounded-[6px] border border-[#393D47] outline-none mt-2 px-3 py-2"
                     {...register("status")}
+                    onChange={(e) => {
+                      handleUpdate(orderDetails._id, e.target.value)
+                    }}
+
                   >
                     <option value="delivered" className="text-[#22C55EFF]">
                       delivered
@@ -156,7 +166,7 @@ const Orders = () => {
                 <div className="flex flex-col mt-7 items-center w-full ">
                   {orderDetails.products.map((item) => {
                     return (
-                      <div className="flex items-center gap-5">
+                      <div key={item._id} className="flex items-center gap-5">
                         <div className="w-[60px] h-[60px] rounded-md">
                           <img
                             src={item.productId.image}
