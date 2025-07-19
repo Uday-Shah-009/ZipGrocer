@@ -1,16 +1,27 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useAllOrders } from "../shared/Queries/orders.query";
+import { useForm } from "react-hook-form";
 
 const Orders = () => {
   const { data, isLoading } = useAllOrders();
   const [orderDetails, setOrderDetails] = useState(null);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const handleDetails = (order) => {
     setOrderDetails(order);
   };
+
   useEffect(() => {
-    console.log("Order Details Updated:", orderDetails);
-  }, [orderDetails]);
+    if (orderDetails) {
+      console.log("Order Details Updated:", orderDetails);
+      reset({ status: orderDetails.status });
+    }
+  }, [orderDetails, reset]);
 
   return (
     <div className="w-full h-full">
@@ -38,7 +49,7 @@ const Orders = () => {
                     <p className="ml-5">{item._id}</p>
                     <p>{item.userId.name}</p>
                     <p className="text-[#8C8D8BFF]">{date}</p>
-                    <p>{item.totalAmount}</p>
+                    <p>₹{item.totalAmount}</p>
                     <p
                       className={`
                 font-semibold
@@ -76,13 +87,13 @@ const Orders = () => {
           )}
         </div>
       </div>
-      <div className="w-[25%] mt-7 py-3 px-2 bg-[#19191FFF] rounded-[8px] border border-[#393D47FF] border-solid shadow-[0px_0px_1px_#171a1f12,0px_0px_2px_#171a1f1F] flex flex-col justify-center">
+      <div className="w-[25%] mt-5 py-3 px-2 bg-[#19191FFF] rounded-[8px] border border-[#393D47FF] border-solid shadow-[0px_0px_1px_#171a1f12,0px_0px_2px_#171a1f1F] flex flex-col justify-center mb-3">
         <h1 className="text-2xl font-semibold">Order Details</h1>
         <hr className="w-full mt-4 border-[#393D47B3]" />
-        <div className="mt-3 flex flex-col items-center justify-center">
+        <div className="mt-3 flex flex-col">
           {orderDetails && (
             <>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 ">
                 <p className="text-[#8C8D8BFF]">OrderID: </p>
                 <p className="text-white font-semibold">{orderDetails._id}</p>
               </div>
@@ -96,8 +107,39 @@ const Orders = () => {
               <hr className="w-full mt-4 border-[#393D47B3]" />
               <div className="flex items-center gap-2">
                 <p className="text-[#8C8D8BFF]">Status: </p>
+
+                <div key={orderDetails._id}>
+                  <select
+                    name="status"
+                    className="bg-[#000000] rounded-[6px] border border-[#393D47] outline-none mt-2 px-3 py-2"
+                    {...register("status")}
+                  >
+                    <option value="delivered" className="text-[#22C55EFF]">
+                      delivered
+                    </option>
+                    <option
+                      value="picked for delivery"
+                      className="text-[#3B82F6FF]"
+                    >
+                      picked for delivery
+                    </option>
+                    <option
+                      value="assigning partner"
+                      className="text-[#6366F1FF]"
+                    >
+                      assigning partner
+                    </option>
+                    <option value="packing" className="text-[#EAB308FF]">
+                      packing
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <hr className="w-full mt-4 border-[#393D47B3]" />
+              <div className="flex items-center gap-2">
+                <p className="text-[#8C8D8BFF]">Order Date: </p>
                 <p className="text-white font-semibold">
-                  {orderDetails.status}
+                  {new Date(orderDetails.createdAt).toLocaleDateString("en-IN")}
                 </p>
               </div>
               <hr className="w-full mt-4 border-[#393D47B3]" />
@@ -106,6 +148,36 @@ const Orders = () => {
                 <p className="text-white font-semibold">
                   {orderDetails.totalAmount}
                 </p>
+              </div>
+              <hr className="w-full mt-4 border-[#393D47B3]" />
+              <div className="mt-5">
+                <h1 className="font-semibold text-2xl">Items Details</h1>
+                <hr className="w-full mt-4 border-[#393D47B3]" />
+                <div className="flex flex-col mt-7 items-center w-full ">
+                  {orderDetails.products.map((item) => {
+                    return (
+                      <div className="flex items-center gap-5">
+                        <div className="w-[60px] h-[60px] rounded-md">
+                          <img
+                            src={item.productId.image}
+                            className="w-full h-full rounded-md"
+                          />
+                        </div>
+                        <div className="flex items-center">
+                          <div className="flex flex-col gap-1">
+                            <p className="text-1xl font-bold">{item.productId.name}</p>
+                            <p className="text-[#8C8D8BFF]">
+                              {item.quantity} x ₹{item.productId.price}
+                            </p>
+                          </div>
+                        </div>
+                         <div className="flex items-center">
+                            <p className="text-[#FFFFFF] font-semibold">₹{item.price}</p>
+                          </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </>
           )}
