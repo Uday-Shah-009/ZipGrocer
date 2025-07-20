@@ -1,8 +1,22 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 
-const UpdateProduct = () => {
+const UpdateProduct = ({product}) => {
+   
+    const {
+        register,
+        handleSubmit,
+        reset,
+    } = useForm();
+
+    const onSubmit = (formData) => {
+        
+    }
+
   return (
-    <div>UpdateProduct</div>
+    <form>
+
+    </form>
   )
 }
 
