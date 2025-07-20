@@ -9,12 +9,13 @@ const productSchema = mongoose.Schema(
     quantity: { type: Number, required: true },
     status: {
       type: String,
-      enum: ["available", "out of stock"],
+      enum: ["available", "out of stock","low stock"],
       default: "available",
     },
     price: { type: Number, required: true, min: 10 },
     category: { type: String, required: true },
     subcategory: { type: String, required: true },
+    isActive: {type: Boolean, default: true}
   },
   {
     timestamps: true,

@@ -53,7 +53,6 @@ export const updateProduct = tryCatchWrapper(async (req, res) => {
   console.log(req.params.id)
   const { id } = req.params;
   const updateData = req.body;
-  // Check if the product image is provided
 
   // Ensure price and quantity are numbers
   if (updateData.price) {

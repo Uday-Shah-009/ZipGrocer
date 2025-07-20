@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { getAllProducts, addProduct, updateProduct } from "../apis/Product";
+import { getAllProducts, addProduct, updateProduct, deleteProduct } from "../apis/Product";
 import { toast } from "react-toastify";
 import { queryClient } from "../configs/QueryClient";
 
@@ -31,6 +31,20 @@ export const useUpdateProduct = (edit) => {
         toast.success(data.message || "Product updated SuccessFully 🥳!");
         queryClient.invalidateQueries({queryKey: ["allproducts"]});
         if(edit) edit(false)
+    },
+    onError: (err) => {
+        toast.error("failed to update Product ❌");
+        console.error(err.message || "someting went wrong");
+    }
+  })
+}
+
+export const useDeleteProduct = () => {
+  return useMutation({
+    mutationFn: deleteProduct,
+    onSuccess: (data) => {
+        toast.success(data.message || "Product updated SuccessFully 🥳!");
+        queryClient.invalidateQueries({queryKey: ["allproducts"]});
     },
     onError: (err) => {
         toast.error("failed to update Product ❌");

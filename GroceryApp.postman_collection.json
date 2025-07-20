@@ -1,0 +1,645 @@
+{
+	"info": {
+		"_postman_id": "de4ca240-9bc5-4175-a267-31fb44922f24",
+		"name": "GroceryApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38675241"
+	},
+	"item": [
+		{
+			"name": "categroy",
+			"item": [
+				{
+					"name": "add category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Electronics",
+									"type": "text"
+								},
+								{
+									"key": "subcategory",
+									"value": "mobile",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1f05040a-dec2-49f0-b698-2a09a76c4daf"
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/category/add"
+					},
+					"response": []
+				},
+				{
+					"name": "categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "subcategory",
+									"value": "cakes",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/category/getAll"
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isDeleted\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/category/delete/685aa47355bc911219ba2f57"
+					},
+					"response": []
+				},
+				{
+					"name": "category update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subcategory\": [\"cake\",\"bread\",\"sweets\",\"fastfood\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/category/update/685aa44a55bc911219ba2f54"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "addProduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "iphone 13",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "Latest iPhone with A15 chip and ios17",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "Apple",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "69990",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Electronics",
+									"type": "text"
+								},
+								{
+									"key": "subcategory",
+									"value": "mobile",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1f0502d3-c20a-4c50-8536-452a42f6415c"
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/product/add"
+					},
+					"response": []
+				},
+				{
+					"name": "all products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "iphone 15",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "Latest iPhone with A17 chip",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "Apple",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "79999",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Electronics",
+									"type": "text"
+								},
+								{
+									"key": "subcategory",
+									"value": "Mobile",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1f0502d3-c20a-4c50-8536-452a42f6415c"
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/product/all"
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "iphone 15",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "Latest iPhone with A17 chip",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "Apple",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "79999",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Electronics",
+									"type": "text"
+								},
+								{
+									"key": "subcategory",
+									"value": "Mobile",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1f0502d3-c20a-4c50-8536-452a42f6415c"
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/product/delete/685a6cd9eb5d5ea1c2ee0b5b"
+					},
+					"response": []
+				},
+				{
+					"name": "update propduct",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "iphone 15",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "desc",
+									"value": "Latest iPhone with A17 chip",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "brand",
+									"value": "Apple",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "79999",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "15",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Electronics",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "subcategory",
+									"value": "Mobile",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1f0502d3-c20a-4c50-8536-452a42f6415c",
+									"disabled": true
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/product/update/68595d30d2622689dac1d8be"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"uday\",\r\n    \"email\": \"zipgrocermanager@gmail.com\",\r\n    \"password\": \"password123\",\r\n    \"role\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"titandeeds3@gmail.com\",\r\n    \"password\": \"password12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/api/auth/user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "add cartItem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"685edbdf68805c1cc0112959\",\r\n    \"productId\": \"685ede1468805c1cc0112967\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cart/add"
+					},
+					"response": []
+				},
+				{
+					"name": "delete cartItem",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cart/remove/68594832edc565da57edadf0"
+					},
+					"response": []
+				},
+				{
+					"name": "get Cart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{baseURL}}/api/cart/get"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "place Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{baseURL}}/api/order/place"
+					},
+					"response": []
+				},
+				{
+					"name": "all orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{baseURL}}/api/order/all",
+						"description": "### API Endpoint: Retrieve All Orders\n\n**Method:** GET  \n**URL:** `http://localhost:3000/api/order/all`\n\n#### Description\n\nThis endpoint retrieves a list of all orders from the system. It is designed to provide users with an overview of all existing orders, which can be useful for monitoring and management purposes.\n\n#### Request Body\n\n- **Format:** x-www-form-urlencoded\n    \n- **Parameters:**\n    \n    - This endpoint does not require any parameters in the request body. An empty payload is sufficient.\n        \n\n#### Expected Response\n\n- **Format:** JSON\n    \n- **Content:** The response will contain an array of order objects, each representing an individual order with its details. The structure of each order object may include fields such as order ID, customer information, order status, and other relevant details.\n    \n\nEnsure that you handle the response appropriately to display or utilize the order information as needed."
+					},
+					"response": []
+				},
+				{
+					"name": "userOrders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{baseURL}}/api/order/my-orders"
+					},
+					"response": []
+				},
+				{
+					"name": "status update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"delivered\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/order/update/685ee764899ec120b3134f9c/status"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delivery partner",
+			"item": [
+				{
+					"name": "profile register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "LisencePlate",
+									"value": "GJ-01-3267-CH",
+									"type": "text"
+								},
+								{
+									"key": "vehicle",
+									"value": "bike",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1f05263e-0442-4e50-a89a-281c9dad40de"
+								}
+							]
+						},
+						"url": "{{baseURL}}/api/delivery/create"
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{baseURL}}/api/delivery/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Order",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/order/685ee764899ec120b3134f9c/accept"
+					},
+					"response": []
+				},
+				{
+					"name": "available orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "{{baseURL}}/api/delivery/available"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3000",
+			"type": "default"
+		}
+	]
+}

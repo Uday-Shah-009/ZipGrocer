@@ -16,3 +16,8 @@ export const updateProduct = async(payload) => {
    const res =  await axiosInstance.put(`/product/update/${id}`, updated);
    return res.data
 }
+
+export const deleteProduct = async(id) => {
+   const res = await axiosInstance.delete(`/product/delete/${id}`);
+   return res.data
+}

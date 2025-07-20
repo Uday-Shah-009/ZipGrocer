@@ -90,7 +90,9 @@ const Orders = () => {
               );
             })
           ) : (
-            <div>no orders yet</div>
+            <div className="flex items-center justify-center p-5 mt-3">
+              <p className="text-[16px] text-[#8C8D8BFF]">no orders yet</p>
+            </div>
           )}
         </div>
       </div>

@@ -25,7 +25,7 @@ export const findProductById = async(id) => {
 }
 
 export const DeleteByID = async(id) => {
-   const deleted = await Product.findByIdAndDelete(id);
+   const deleted = await Product.findByIdAndUpdate(id, {isActive: false});
    return deleted
 }
 
@@ -34,6 +34,6 @@ export const updateById = async(id,updateData) => {
 }
 
 export const allProducts = async() => {
-  const products = await Product.find();
+  const products = await Product.find({isActive: true});
   return products
 }

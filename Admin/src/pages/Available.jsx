@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useGetProducts } from "../shared/Queries/product.query";
+import {
+  useDeleteProduct,
+  useGetProducts,
+} from "../shared/Queries/product.query";
 import UpdateProduct from "../components/UpdateProduct";
-import { use } from "react";
 
 const Available = () => {
   const { data, isLoading } = useGetProducts();
+  const { mutate: useDeleteMutate } = useDeleteProduct();
   const [isEdit, setIsEdit] = useState(false);
   const [selectedProduct, setSelected] = useState(null);
   const handleEdit = (data) => {
     setIsEdit(true);
     setSelected(data);
   };
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      useDeleteMutate(id);
+    }
+  };
+
   useEffect(() => {
     console.log(selectedProduct);
   }, [selectedProduct]);
@@ -19,7 +29,7 @@ const Available = () => {
     return (
       <div className="p-6 w-full min-h-screen">
         <div className="w-full flex  justify-between">
-          <UpdateProduct product={selectedProduct} edit={setIsEdit}/>
+          <UpdateProduct product={selectedProduct} edit={setIsEdit} />
           <img
             src="cancel.svg"
             className="w-[30px] h-[30px] cursor-pointer"
@@ -59,7 +69,7 @@ const Available = () => {
             <div className="flex justify-center items-center my-10">
               <span className="loading loading-spinner loading-lg text-primary"></span>
             </div>
-          ) : (
+          ) : data.products.length > 0 ? (
             data.products.map((item) => {
               const last = data.products[data.products.length - 1];
               return (
@@ -109,6 +119,12 @@ const Available = () => {
                 </React.Fragment>
               );
             })
+          ) : (
+            <div className="flex items-center justify-center mt-3">
+              <p className="text-[16px] text-[#8C8D8BFF] p-5">
+                No Products Available
+              </p>
+            </div>
           )}
         </div>
       </div>

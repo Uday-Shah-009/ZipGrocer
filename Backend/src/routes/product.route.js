@@ -19,7 +19,7 @@ productRouter.post(
   addProduct
 );
 
-productRouter.delete(
+productRouter.patch(
   "/delete/:id",
   authMiddleware,
   userRoleAuth(["admin"]),
