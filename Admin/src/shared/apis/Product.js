@@ -9,3 +9,7 @@ export const getAllProducts = async() => {
    const res = await axiosInstance.get("/product/all");
    return res.data
 }
+
+export const updateProduct = async(id, update) => {
+   const res =  await axiosInstance.put("/product/update/:id", {update})
+}

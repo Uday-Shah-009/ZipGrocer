@@ -3,10 +3,9 @@ import { useState } from "react";
 import { useAllOrders, useUpdateStatus } from "../shared/Queries/orders.query";
 import { useForm } from "react-hook-form";
 
-
 const Orders = () => {
   const { data, isLoading } = useAllOrders();
-  const {mutate: useStatusMutate, isPending} = useUpdateStatus();
+  const { mutate: useStatusMutate, isPending } = useUpdateStatus();
   const [orderDetails, setOrderDetails] = useState(null);
   const {
     register,
@@ -18,9 +17,9 @@ const Orders = () => {
     setOrderDetails(order);
   };
   const handleUpdate = (id, status) => {
-    console.log(id)
-      useStatusMutate({id, status});
-  }
+    console.log(id);
+    useStatusMutate({ id, status });
+  };
 
   useEffect(() => {
     if (orderDetails) {
@@ -46,7 +45,7 @@ const Orders = () => {
           <hr className="w-full mt-4 border-[#393D47B3]" />
           {isLoading ? (
             <div className="loading-bars"></div>
-          ) : (
+          ) : data.orders.length > 0 ? (
             data.orders.map((item) => {
               const date = new Date(item.createdAt).toLocaleDateString("en-IN");
               return (
@@ -90,6 +89,8 @@ const Orders = () => {
                 </div>
               );
             })
+          ) : (
+            <div>no orders yet</div>
           )}
         </div>
       </div>
@@ -120,9 +121,8 @@ const Orders = () => {
                     className="bg-[#000000] rounded-[6px] border border-[#393D47] outline-none mt-2 px-3 py-2"
                     {...register("status")}
                     onChange={(e) => {
-                      handleUpdate(orderDetails._id, e.target.value)
+                      handleUpdate(orderDetails._id, e.target.value);
                     }}
-
                   >
                     <option value="delivered" className="text-[#22C55EFF]">
                       delivered
@@ -175,15 +175,19 @@ const Orders = () => {
                         </div>
                         <div className="flex items-center">
                           <div className="flex flex-col gap-1">
-                            <p className="text-1xl font-bold">{item.productId.name}</p>
+                            <p className="text-1xl font-bold">
+                              {item.productId.name}
+                            </p>
                             <p className="text-[#8C8D8BFF]">
                               {item.quantity} x ₹{item.productId.price}
                             </p>
                           </div>
                         </div>
-                         <div className="flex items-center">
-                            <p className="text-[#FFFFFF] font-semibold">₹{item.price}</p>
-                          </div>
+                        <div className="flex items-center">
+                          <p className="text-[#FFFFFF] font-semibold">
+                            ₹{item.price}
+                          </p>
+                        </div>
                       </div>
                     );
                   })}

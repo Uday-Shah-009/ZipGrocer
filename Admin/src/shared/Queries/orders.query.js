@@ -18,7 +18,7 @@ export const useUpdateStatus = () => {
       queryClient.invalidateQueries({ queryKey: ["orders"] });
     },
     onError: (err) => {
-      toast.error(err);
+      toast.error(err.message);
     },
   });
 };
