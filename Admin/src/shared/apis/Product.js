@@ -18,6 +18,6 @@ export const updateProduct = async(payload) => {
 }
 
 export const deleteProduct = async(id) => {
-   const res = await axiosInstance.delete(`/product/delete/${id}`);
+   const res = await axiosInstance.patch(`/product/delete/${id}`);
    return res.data
 }

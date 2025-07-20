@@ -43,7 +43,7 @@ export const useDeleteProduct = () => {
   return useMutation({
     mutationFn: deleteProduct,
     onSuccess: (data) => {
-        toast.success(data.message || "Product updated SuccessFully 🥳!");
+        toast.success(data.message || "Product deleted SuccessFully 🥳!");
         queryClient.invalidateQueries({queryKey: ["allproducts"]});
     },
     onError: (err) => {
