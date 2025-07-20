@@ -132,6 +132,7 @@ const Orders = () => {
                     <option
                       value="picked for delivery"
                       className="text-[#3B82F6FF]"
+                      disabled
                     >
                       picked for delivery
                     </option>
