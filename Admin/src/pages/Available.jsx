@@ -18,8 +18,8 @@ const Available = () => {
   if (isEdit) {
     return (
       <div className="p-6 w-full min-h-screen">
-        <div className="w-full flex items-center justify-between">
-          <UpdateProduct product={selectedProduct}/>
+        <div className="w-full flex  justify-between">
+          <UpdateProduct product={selectedProduct} edit={setIsEdit}/>
           <img
             src="cancel.svg"
             className="w-[30px] h-[30px] cursor-pointer"

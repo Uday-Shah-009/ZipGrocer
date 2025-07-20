@@ -30,7 +30,6 @@ productRouter.put(
   "/update/:id",
   authMiddleware,
   userRoleAuth(["admin"]),
-  upload,
   updateProduct
 );
 

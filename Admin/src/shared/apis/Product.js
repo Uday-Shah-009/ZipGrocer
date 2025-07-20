@@ -10,7 +10,9 @@ export const getAllProducts = async() => {
    return res.data
 }
 
-export const updateProduct = async(id, update) => {
-   const res =  await axiosInstance.put("/product/update/:id", {update});
+export const updateProduct = async(payload) => {
+   const {id , updated} = payload
+   console.log(updated);
+   const res =  await axiosInstance.put(`/product/update/${id}`, updated);
    return res.data
 }

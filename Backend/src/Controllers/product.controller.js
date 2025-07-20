@@ -49,12 +49,11 @@ export const deleteProduct = tryCatchWrapper(async (req, res) => {
 });
 
 export const updateProduct = tryCatchWrapper(async (req, res) => {
+  console.log(req.body);
+  console.log(req.params.id)
   const { id } = req.params;
   const updateData = req.body;
   // Check if the product image is provided
-  if (req.file && req.file.path) {
-    updateData.image = req.file.path;
-  }
 
   // Ensure price and quantity are numbers
   if (updateData.price) {

@@ -24,12 +24,13 @@ export const useAddProduct = () => {
   })
 }
 
-export const useUpdateProduct = () => {
+export const useUpdateProduct = (edit) => {
   return useMutation({
     mutationFn: updateProduct,
     onSuccess: (data) => {
         toast.success(data.message || "Product updated SuccessFully 🥳!");
-        queryClient.invalidateQueries({queryKey: ["allproducts"]})
+        queryClient.invalidateQueries({queryKey: ["allproducts"]});
+        if(edit) edit(false)
     },
     onError: (err) => {
         toast.error("failed to update Product ❌");
