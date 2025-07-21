@@ -167,28 +167,27 @@ const Orders = () => {
                 <h1 className="font-semibold text-2xl">Items Details</h1>
                 <hr className="w-full mt-4 border-[#393D47B3]" />
                 <div className="flex flex-col mt-7 items-center w-full ">
-                  {orderDetails.products.map((item) => {
+                  {orderDetails.snapshot.map((item, index) => {
                     return (
-                      <div key={item._id} className="flex items-center gap-5">
+                      <div key={index} className="flex items-center gap-5">
                         <div className="w-[60px] h-[60px] rounded-md">
                           <img
-                            src={item.productId.image}
-                            className="w-full h-full rounded-md"
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full rounded-md object-cover"
                           />
                         </div>
                         <div className="flex items-center">
                           <div className="flex flex-col gap-1">
-                            <p className="text-1xl font-bold">
-                              {item.productId.name}
-                            </p>
+                            <p className="text-1xl font-bold">{item.name}</p>
                             <p className="text-[#8C8D8BFF]">
-                              {item.quantity} x ₹{item.productId.price}
+                              {item.quantity} x ₹{item.price}
                             </p>
                           </div>
                         </div>
                         <div className="flex items-center">
                           <p className="text-[#FFFFFF] font-semibold">
-                            ₹{item.price}
+                            ₹{item.quantity * item.price}
                           </p>
                         </div>
                       </div>

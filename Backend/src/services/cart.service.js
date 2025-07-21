@@ -31,6 +31,7 @@ export const getCartDetails = async (userId) => {
       price: product.price,
       quantity: cart[product._id],
       total: itemTotal,
+      image: product.image
     });
   }
   return { cartItems, Total };

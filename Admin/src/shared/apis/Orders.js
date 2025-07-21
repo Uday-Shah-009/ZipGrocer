@@ -2,7 +2,9 @@ import axiosInstance from "./axiosIntercept";
 
 export const getAllOrders = async() => {
    const res = await axiosInstance.get("/order/all");
+   console.log(res.data)
    return res.data
+
 }
 
 export const updateStatus = async(payload) => {

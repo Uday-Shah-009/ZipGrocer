@@ -6,7 +6,7 @@ import {
   getAllOrders,
   updateOrderStatus,
   userOrders,
-  GetProductDetails,
+  GetProductDetails
 } from "../services/order.service.js";
 import { sendMail } from "../utils/nodeMailer.js";
 import { emitUpdate } from "../utils/socketEmits.js";
@@ -15,7 +15,7 @@ import dotenv from "dotenv";
 
 dotenv.config({ path: "./.env" });
 
-export const createOrder = tryCatchWrapper(async (req, res) => {
+export const createOrder = async (req, res) => {
   const { id } = req.user;
   const placeOrder = await createOrderService(id);
   const user = await findByID(id);
@@ -53,7 +53,7 @@ export const createOrder = tryCatchWrapper(async (req, res) => {
   res
     .status(201)
     .json({ message: "order Placed Successfully", orderId: placeOrder._id });
-});
+};
 
 export const allOrders = tryCatchWrapper(async (req, res) => {
   const result = await getAllOrders();

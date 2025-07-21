@@ -9,7 +9,6 @@ export const GetAllOrdersDoa = async () => {
   const orders = await Order.find()
     .populate("userId", "name email")
     .populate("deliveryPartnerId", "name email")
-    .populate("products.productId", "name price image")
     .sort({ createdAt: -1 })
     .lean();
   return orders;
@@ -41,7 +40,7 @@ export const getOrderById = async(id) => {
 }
 
 export const GetProductsDetailsDao = async(id) => {
-  return await Order.findOne({_id: id}).populate("products.productId", "name")
+  return await Order.findOne({_id: id}).populate("snapshot","productId")
 }
 
 export const acceptedOrder = async (id, partnerId, status) => {

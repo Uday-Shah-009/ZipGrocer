@@ -12,6 +12,7 @@ import { clearCart } from "../DOA/user.doa.js";
 
 export const createOrderService = async (userId) => {
   const { cartItems, Total } = await getCartDetails(userId);
+  
 
   if (!cartItems || cartItems.length === 0) {
     throw new Error("Cart is empty");
@@ -19,13 +20,17 @@ export const createOrderService = async (userId) => {
 
   const orderData = {
     userId,
-    products: cartItems.map((item) => ({
+    snapshot: cartItems.map((item) => ({
       productId: item.productId,
-      quantity: item.quantity,
+      name: item.name,
       price: item.price,
+      quantity: item.quantity,
+      image: item.image,
     })),
     totalAmount: Total,
+    quantity: cartItems.reduce((sum, item) => sum + item.quantity, 0)
   };
+
   const order = await createOrderDoa(orderData);
   await clearCart(userId);
   return order;
@@ -59,7 +64,7 @@ export const acceptOrderService = async (id, partnerid, status) => {
 
 export const GetProductDetails = async(id) => {
   const order = await GetProductsDetailsDao(id)
-  return order.products.map(item => ({
+  return order.snapshot.map(item => ({
     name: item.productId.name,
     quantity: item.quantity,
     price: item.price
