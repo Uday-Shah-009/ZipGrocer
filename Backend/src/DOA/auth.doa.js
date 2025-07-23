@@ -28,3 +28,8 @@ export const getAllUsers = async () => {
   const users = await userModel.find({ role: "user" });
   return users;
 };
+
+export const getDeliverypartners = async() => {
+  const users = await userModel.find({role: "delivery"});
+  return users
+}

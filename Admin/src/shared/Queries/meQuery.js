@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getMe } from "../apis/userLogin.js";
+import { getDeliveryPartners, getMe, getUsers } from "../apis/userLogin.js";
 import { useAuthStore } from "../store/authState.js";
 
 export const useMeQuery = () => {
@@ -13,3 +13,17 @@ export const useMeQuery = () => {
     retry: false,
   });
 };
+
+export const useAllusers = () => {
+  return useQuery({
+    queryKey: ["allusers"],
+    queryFn: getUsers,
+  })
+}
+
+export const useAllDelivery = () => {
+  return useQuery({
+    queryKey: ["allusers"],
+    queryFn: getDeliveryPartners,
+  })
+}

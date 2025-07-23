@@ -2,6 +2,7 @@ import { getAllOrders, updateStatus } from "../apis/Orders";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { queryClient } from "../configs/QueryClient";
 import { toast } from "react-toastify";
+
 export const useAllOrders = () => {
   return useQuery({
     queryKey: ["orders"],

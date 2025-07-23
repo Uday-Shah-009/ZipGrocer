@@ -1,4 +1,5 @@
 import { cookieConfigs } from "../configs/cookieConfigs.js";
+import { getAllUsers, getDeliverypartners } from "../DOA/auth.doa.js";
 import {
   loginUserService,
   registerUserService,
@@ -9,10 +10,10 @@ import { tryCatchWrapper } from "../utils/tryCatchWrapper.js";
 
 export const registerUser = tryCatchWrapper(async (req, res) => {
   const user = req.body;
-  const {createdUser} = await registerUserService(user);
- 
+  const { createdUser } = await registerUserService(user);
+
   if (createdUser.role === "user") {
-    console.log("sent to user")
+    console.log("sent to user");
     await sendMail({
       to: createdUser.email,
       subject: "welcome to Zip Grocer",
@@ -35,7 +36,7 @@ export const registerUser = tryCatchWrapper(async (req, res) => {
   }
 
   if (createdUser) {
-    res.cookie("token", createdUser.token , cookieConfigs);
+    res.cookie("token", createdUser.token, cookieConfigs);
     res
       .status(201)
       .json({ status: "success", message: "user created", user: createdUser });
@@ -48,10 +49,14 @@ export const loginUser = tryCatchWrapper(async (req, res) => {
   const user = req.body;
   const loggedIn = await loginUserService(user);
   if (loggedIn) {
-    res.cookie("token", loggedIn.token ,cookieConfigs);
+    res.cookie("token", loggedIn.token, cookieConfigs);
     res
       .status(200)
-      .json({ user: loggedIn.existinguser, token: loggedIn.token, message: "login Success" });
+      .json({
+        user: loggedIn.existinguser,
+        token: loggedIn.token,
+        message: "login Success",
+      });
   } else {
     res.status(400).json({ status: "failed!", message: "try again" });
   }
@@ -66,3 +71,15 @@ export const userProfile = tryCatchWrapper(async (req, res) => {
     res.status(400).json({ status: "failed!", message: "try again" });
   }
 });
+
+export const allusers = tryCatchWrapper(async (req, res) => {
+  const users = await getAllUsers();
+  if (users) {
+    res.status(200).json({ count: users.length });
+  }
+});
+
+export const DeliveryPartners = tryCatchWrapper(async(req,res) => {
+  const delivery = await getDeliverypartners();
+    res.status(200).json({count: delivery.length})
+})
