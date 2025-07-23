@@ -20,7 +20,7 @@ export const createOrder = async (req, res) => {
   const placeOrder = await createOrderService(id);
   const user = await findByID(id);
   const product = await GetProductDetails(placeOrder._id);
-
+  
   if (!placeOrder) {
     return res
       .status(400)

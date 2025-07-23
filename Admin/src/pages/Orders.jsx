@@ -166,10 +166,10 @@ const Orders = () => {
               <div className="mt-5">
                 <h1 className="font-semibold text-2xl">Items Details</h1>
                 <hr className="w-full mt-4 border-[#393D47B3]" />
-                <div className="flex flex-col mt-7 items-center w-full ">
+                <div className="flex flex-col mt-7 items-center w-full gap-3">
                   {orderDetails.snapshot.map((item, index) => {
                     return (
-                      <div key={index} className="flex items-center gap-5">
+                      <div key={index} className="grid grid-cols-3 place-content-between w-full place-items-center gap-3">
                         <div className="w-[60px] h-[60px] rounded-md">
                           <img
                             src={item.image}
@@ -178,8 +178,8 @@ const Orders = () => {
                           />
                         </div>
                         <div className="flex items-center">
-                          <div className="flex flex-col gap-1">
-                            <p className="text-1xl font-bold">{item.name}</p>
+                          <div className="flex flex-col gap-1 items-center">
+                            <p className="text-[16px] font-bold">{item.name}</p>
                             <p className="text-[#8C8D8BFF]">
                               {item.quantity} x ₹{item.price}
                             </p>

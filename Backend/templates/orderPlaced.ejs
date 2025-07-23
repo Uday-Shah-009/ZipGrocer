@@ -10,7 +10,9 @@
     <h3>Items:</h3>
     <ul>
       <% items.forEach(item => { %>
+        <% console.log(item) %>
       <li><%= item.name %> – Qty: <%= item.quantity %></li>
+      <li>Total to pay - <%= item.price * item.quantity%></li>
       <% }); %>
     </ul>
 
