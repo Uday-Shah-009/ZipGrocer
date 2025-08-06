@@ -20,7 +20,7 @@ const Dashboard = () => {
           </div>
           {isUserLoading ? (
             <div className="flex items-center justify-center">
-              <div className="loading-bars"></div>
+              <div className="loading loading-bars loading-xs"></div>
             </div>
           ) : (
             <p className="text-white font-bold text-2xl">{user.count}</p>
@@ -33,7 +33,7 @@ const Dashboard = () => {
           </div>
           {isOrdersLoading ? (
             <div className="flex items-center justify-center">
-              <div className="loading-bars"></div>
+              <div className="loading loading-bars loading-xs"></div>
             </div>
           ) : (
             <p className="text-white font-bold text-2xl">{order.orders.length}</p>
@@ -46,7 +46,7 @@ const Dashboard = () => {
           </div>
           {isPartnerLoading ? (
             <div className="flex items-center justify-center">
-              <div className="loading-bars"></div>
+              <div className="loading loading-bars loading-xs"></div>
             </div>
           ) : (
             <p className="text-white font-bold text-2xl">{delivery.count}</p>

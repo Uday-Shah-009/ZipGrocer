@@ -16,6 +16,7 @@ const DeliveryPartnerSchema = mongoose.Schema({
         }
     },
     totalDeliveries: {type: Number, default: 0},
+    totalEranings: {type: Number, default: 0},
     isOnline: {type: Boolean, default: true},
     profileImage: {type: String , required: true}
 });
