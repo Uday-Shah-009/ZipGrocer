@@ -17,15 +17,15 @@ const SignUpScreen = () => {
   });
 
   const titles = ["Earn Daily", "Be Faster!", "WELCOME"];
-  const [index, setIndex] = useState(0);
-  const [userIn, setIn] = useState(false);
+  const [index, setIndex] = useState(2);
+  const [userIn, setIn] = useState(true);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
     const interval = setInterval(() => {
       setVisible(false);
       setTimeout(() => {
         setIndex((prevIn) => (prevIn + 1) % titles.length);
-        setVisible(true)
+        setVisible(true);
       }, 300);
     }, 2000);
     if (userIn) {
@@ -57,7 +57,7 @@ const SignUpScreen = () => {
           render={({ field: { onChange, value } }) => (
             <TextInput
               className="w-[70%] border-2 text-[18px] rounded-md mt-8"
-              placeholder="enter your name"
+              placeholder="name"
               onChangeText={onChange}
               value={value}
             />
@@ -72,7 +72,7 @@ const SignUpScreen = () => {
           render={({ field: { onChange, value } }) => (
             <TextInput
               className="w-[70%] border-2  text-[18px] rounded-md mt-8"
-              placeholder="enter your email"
+              placeholder="email"
               onChangeText={onChange}
               value={value}
             />
@@ -87,7 +87,7 @@ const SignUpScreen = () => {
           render={({ field: { onChange, value } }) => (
             <TextInput
               className="w-[70%] border-2  text-[18px] rounded-md mt-8"
-              placeholder="set your password"
+              placeholder="password"
               onChangeText={onChange}
               secureTextEntry={true}
               value={value}
@@ -102,6 +102,12 @@ const SignUpScreen = () => {
             Sign Up
           </Text>
         </Pressable>
+        <View>
+          <Pressable className="flex flex-row gap-2 mt-2">
+            <Text>Already Have an Account</Text>
+            <Text className="underline text-blue-500">Login here</Text>
+          </Pressable>
+        </View>
       </View>
       <View
         className="bg-green-800 w-full h-[340px] rounded-[50%] flex justify-start
