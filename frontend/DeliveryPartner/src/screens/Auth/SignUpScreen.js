@@ -16,6 +16,7 @@ const SignUpScreen = () => {
       name: "",
       email: "",
       password: "",
+      role: "delivery"
     },
   });
 
@@ -24,19 +25,19 @@ const SignUpScreen = () => {
   const [userIn, setIn] = useState(false);
   const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("triggered");
-      setVisible(false);
-      setTimeout(() => {
-        setIndex((prevIn) => (prevIn + 1) % titles.length);
-        setVisible(true);
-      }, 300);
-    }, 2000);
-    if (userIn) {
-      return clearInterval(interval);
-    }
-  },[]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     console.log("triggered");
+  //     setVisible(false);
+  //     setTimeout(() => {
+  //       setIndex((prevIn) => (prevIn + 1) % titles.length);
+  //       setVisible(true);
+  //     }, 300);
+  //   }, 2000);
+  //   if (userIn) {
+  //     return clearInterval(interval);
+  //   }
+  // },[]);
 
   const onSubmit = (data) => {
     console.log("Form Submitted ✅", data);

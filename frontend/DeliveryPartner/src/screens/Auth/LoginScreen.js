@@ -3,6 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import '../../global.css'
+import { userLogin } from "../../api/Auth/auth.api.js";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -18,8 +19,10 @@ const LoginScreen = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async(data) => {
+    console.log(data)
+    const res = await userLogin(data);
+    console.log(res)
     reset();
   };
 
