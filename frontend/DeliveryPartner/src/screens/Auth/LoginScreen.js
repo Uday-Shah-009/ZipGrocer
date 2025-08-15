@@ -4,8 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import '../../global.css'
 import { userLogin } from "../../api/Auth/auth.api.js";
+import { AuthState } from "../../Services/store/AuthStore.js";
 
 const LoginScreen = () => {
+  const login = AuthState((state) => state.login)
   const navigation = useNavigation();
   const {
     control,
@@ -22,7 +24,7 @@ const LoginScreen = () => {
   const onSubmit = async(data) => {
     console.log(data)
     const res = await userLogin(data);
-    console.log(res)
+    login(res);
     reset();
   };
 

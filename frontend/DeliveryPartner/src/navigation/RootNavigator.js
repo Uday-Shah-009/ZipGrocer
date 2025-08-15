@@ -2,15 +2,16 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AppStack from "./AppStack";
 import AuthStack from "./AuthStack";
-import { View } from "react-native";
+import { AuthState } from "../Services/store/AuthStore";
+
 
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
-  const isLoggedin = false;
+  const {isAuth} = AuthState();
   return (
       <Stack.Navigator>
-        {isLoggedin ? (
+        {isAuth ? (
           <Stack.Screen
             name="app"
             component={AppStack}

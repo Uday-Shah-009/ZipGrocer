@@ -47,6 +47,7 @@ export const registerUser = tryCatchWrapper(async (req, res) => {
 
 export const loginUser = tryCatchWrapper(async (req, res) => {
   const user = req.body;
+  console.log(user)
   const loggedIn = await loginUserService(user);
   if (loggedIn) {
     res.cookie("token", loggedIn.token, cookieConfigs);
