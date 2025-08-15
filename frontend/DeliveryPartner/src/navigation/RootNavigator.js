@@ -8,7 +8,7 @@ import { AuthState } from "../Services/store/AuthStore";
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
-  const {isAuth} = AuthState();
+  const isAuth = AuthState(state => state.isAuth);
   return (
       <Stack.Navigator>
         {isAuth ? (

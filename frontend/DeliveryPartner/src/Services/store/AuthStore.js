@@ -9,7 +9,11 @@ export const AuthState = create(
       isAuth: false,
       user: null,
       login: (user) => set({ isAuth: true, user }),
-      logout: () => set({ isAuth: false, user: null }),
+      logout: async() => {
+        console.log("logout called");
+        await AsyncStorage.clear();
+        set({isAuth: false, user: null})
+      },
     }),
     {
       name: "auth-token",
