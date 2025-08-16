@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import {createNativeStackNavigator} from "@react-navigation/native-stack"
-import Logout from '../components/Logut';
-import LoginScreen from '../screens/Auth/LoginScreen';
+import TabNavigator from '../screens/App/TabNavigator';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -9,8 +9,8 @@ const AppStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen 
-        component={Logout}
-        name='Logout'
+        component={TabNavigator}
+        name='AppNavigator'
         options={{headerShown: false}}
       />
     </Stack.Navigator>
