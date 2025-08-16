@@ -17,7 +17,8 @@ dotenv.config({ path: "./.env" });
 
 export const createOrder = async (req, res) => {
   const { id } = req.user;
-  const placeOrder = await createOrderService(id);
+  const {lat,lon} = req.body;
+  const placeOrder = await createOrderService(id, {lat , lon});
   const user = await findByID(id);
   const product = await GetProductDetails(placeOrder._id);
   

@@ -7,6 +7,8 @@ const orderSchema = new mongoose.Schema(
       ref: "user",
       required: true,
     },
+    customerLat: {type: Number, required: true},
+    customerLon: {type: Number, required: true},
     snapshot: [
       {
         productId: { type: mongoose.Schema.Types.ObjectId, required: true },

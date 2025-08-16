@@ -3,6 +3,7 @@ import {
   partnerProfile,
   partnerService,
 } from "../services/Delivery.service.js";
+import { calculateDistance } from "../utils/CalculateDistance.js";
 import { tryCatchWrapper } from "../utils/tryCatchWrapper.js";
 
 export const partnerRegister = tryCatchWrapper(async (req, res) => {
@@ -32,7 +33,23 @@ export const getProfile = tryCatchWrapper(async (req, res) => {
   return res.status(200).json({ message: "Profile found!!", profile: profile });
 });
 
-export const availableOrders = tryCatchWrapper(async(req,res) => {
-  const result = await AvailableOrderService();
-  res.status(200).json({result})
+export const availableOrders = tryCatchWrapper(async (req, res) => {
+  const { lat, lon } = req.body;
+  const orders = await AvailableOrderService();
+  console.log(orders);
+  const result = orders
+    .map((order) => ({
+      ...order._doc,
+      distance: parseFloat(
+        calculateDistance(
+          lat,
+          lon,
+          order.customerLat,
+          order.customerLon
+        ).toFixed(2)
+      ),
+    }))
+    .sort((a, b) => a.distance - b.distance); 
+
+  res.status(200).json({ result });
 });

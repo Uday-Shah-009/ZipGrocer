@@ -11,13 +11,13 @@ import { getCartDetails } from "./cart.service.js";
 import { clearCart } from "../DOA/user.doa.js";
 import { quantityManager } from "../DOA/product.doa.js";
 
-export const createOrderService = async (userId) => {
+export const createOrderService = async (userId, location) => {
   const { cartItems, Total } = await getCartDetails(userId);
 
   if (!cartItems || cartItems.length === 0) {
     throw new Error("Cart is empty");
   }
-  
+
   await Promise.all(
     cartItems.map(async (item) => {
       return await quantityManager(item.productId, item.quantity);
@@ -26,6 +26,8 @@ export const createOrderService = async (userId) => {
 
   const orderData = {
     userId,
+    customerLat: location.lat,
+    customerLon: location.lon,
     snapshot: cartItems.map((item) => ({
       productId: item.productId,
       name: item.name,
