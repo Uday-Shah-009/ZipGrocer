@@ -3,7 +3,6 @@ import { getDeliveryPartners, getMe, getUsers } from "../apis/userLogin.js";
 import { useAuthStore } from "../store/authState.js";
 
 export const useMeQuery = () => {
-  const { login, logout } = useAuthStore();
   const token = useAuthStore((state) => state.token);
 
   return useQuery({
@@ -23,7 +22,7 @@ export const useAllusers = () => {
 
 export const useAllDelivery = () => {
   return useQuery({
-    queryKey: ["allusers"],
+    queryKey: ["allDelivery"],
     queryFn: getDeliveryPartners,
   })
 }

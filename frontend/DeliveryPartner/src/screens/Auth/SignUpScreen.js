@@ -42,7 +42,6 @@ const SignUpScreen = () => {
   },[]);
 
   const onSubmit = async(data) => {
-    console.log("Form Submitted ✅", data);
     const res = await userRegister(data);
     login(res);
     reset();
