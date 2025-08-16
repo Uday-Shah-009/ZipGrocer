@@ -25,19 +25,18 @@ const SignUpScreen = () => {
   const [userIn, setIn] = useState(false);
   const [visible, setVisible] = useState(true);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     console.log("triggered");
-  //     setVisible(false);
-  //     setTimeout(() => {
-  //       setIndex((prevIn) => (prevIn + 1) % titles.length);
-  //       setVisible(true);
-  //     }, 300);
-  //   }, 2000);
-  //   if (userIn) {
-  //     return clearInterval(interval);
-  //   }
-  // },[]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setIndex((prevIn) => (prevIn + 1) % titles.length);
+        setVisible(true);
+      }, 300);
+    }, 2000);
+    if (userIn) {
+      return clearInterval(interval);
+    }
+  },[]);
 
   const onSubmit = (data) => {
     console.log("Form Submitted ✅", data);
@@ -46,12 +45,8 @@ const SignUpScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <ScrollView 
-        className="flex-1" 
-        contentContainerStyle={{ flexGrow: 1 }}
-        showsVerticalScrollIndicator={false}
-      >
-        <View className="flex-1 justify-center items-center px-6 py-8">
+      
+        <View className="flex-1 justify-center items-center px-6 py-8 mb-[120px]">
           <View className="w-full max-w-sm items-center">
             <Image
               source={require("../../../assets/images/logo.png")}
@@ -130,7 +125,7 @@ const SignUpScreen = () => {
             </Pressable>
           </View>
         </View>
-      </ScrollView>
+     
       
       {/* Decorative Bottom Circle with Animation */}
       <View className="absolute bottom-0 left-0 right-0 h-[240px] overflow-hidden pointer-events-none">

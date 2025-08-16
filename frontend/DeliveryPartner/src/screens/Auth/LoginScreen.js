@@ -31,7 +31,7 @@ const LoginScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
         {/* Main Content Container */}
-        <View className="flex-1 relative justify-center items-center px-6 ">
+        <View className="flex-1 relative justify-center items-center px-6 mb-[120px]">
           <View className="w-full max-w-sm items-center">
             <Image
               source={require("../../../assets/images/logo.png")}
