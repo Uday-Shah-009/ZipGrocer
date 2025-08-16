@@ -3,8 +3,11 @@ import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { userRegister } from "../../api/Auth/auth.api";
+import {AuthState} from "../../Services/store/AuthStore"
 
 const SignUpScreen = () => {
+  const login = AuthState(state => state.login);
   const navigation = useNavigation();
   const {
     control,
@@ -38,8 +41,10 @@ const SignUpScreen = () => {
     }
   },[]);
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     console.log("Form Submitted ✅", data);
+    const res = await userRegister(data);
+    login(res);
     reset();
   };
 
