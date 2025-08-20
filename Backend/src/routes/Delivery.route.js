@@ -25,7 +25,7 @@ deliveryRouter.get(
   getProfile
 );
 
-deliveryRouter.get(
+deliveryRouter.post(
   "/available",
   authMiddleware,
   userRoleAuth("delivery"),

@@ -49,7 +49,6 @@ export const availableOrders = tryCatchWrapper(async (req, res) => {
         ).toFixed(2)
       ),
     }))
-    .sort((a, b) => a.distance - b.distance); 
-
+    .sort((a, b) => a.distance - b.distance)
   res.status(200).json({ result });
 });
